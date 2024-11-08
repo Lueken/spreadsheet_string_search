@@ -8,7 +8,7 @@ A Python utility for searching through Excel (.xlsx, .xls) and CSV files in a di
 - [Configuration Guide](Documentation/Config.md) - Configuration options and settings
 - [API Reference](Documentation/api_reference.md) - Function documentation and usage
 - [Performance Guide](Documentation/performance.md) - Optimization and best practices
-
+ 
 ## ⚡ Quick Start
 
 1. **Clone or Download**:
