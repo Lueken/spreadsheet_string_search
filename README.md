@@ -8,32 +8,123 @@ A Python utility for searching through Excel (.xlsx, .xls) and CSV files in a di
 - [Configuration Guide](Documentation/Config.md) - Configuration options and settings
 - [API Reference](Documentation/api_reference.md) - Function documentation and usage
 - [Performance Guide](Documentation/performance.md) - Optimization and best practices
- 
+- [Examples](Documentation/examples/) - Sample usage and patterns
+
 ## ⚡ Quick Start
 
-1. **Clone or Download**:
+### Prerequisites
+
+1. **Install Python**:
+   - Download and install Python 3.7 or higher from [python.org](https://python.org)
+   - During installation on Windows, make sure to check ✅ "Add Python to PATH"
+   - Verify installation:
+     ```bash
+     python --version  # Should show Python 3.7 or higher
+     ```
+
+2. **Install Git** (Optional, for cloning):
+   - Download and install from [git-scm.com](https://git-scm.com/downloads)
+   - Verify installation:
+     ```bash
+     git --version
+     ```
+
+### Installation Steps
+
+1. **Get the Code**:
+
+   Option A - Using Git:
    ```bash
    git clone [your-repository-url]
    cd csv_string_search
    ```
 
-2. **Set Up Virtual Environment** (Recommended):
+   Option B - Direct Download:
+   - Download the ZIP file from [repository-url]
+   - Extract to your desired location
+   - Open terminal/command prompt and navigate to the extracted folder:
+     ```bash
+     cd path/to/csv_string_search
+     ```
+
+2. **Set Up Virtual Environment**:
    ```bash
-   # Windows
+   # Windows (Command Prompt)
+   python -m pip install --upgrade pip
+   python -m pip install virtualenv
    python -m venv venv
    venv\Scripts\activate
-
-   # Unix/MacOS
+   
+   # Windows (PowerShell) - if above doesn't work
    python -m venv venv
+   .\venv\Scripts\Activate.ps1
+   
+   # Unix/MacOS
+   python3 -m pip install --upgrade pip
+   python3 -m pip install virtualenv
+   python3 -m venv venv
    source venv/bin/activate
    ```
 
-3. **Install Dependencies**:
+3. **Install Required Packages**:
    ```bash
+   # Install core dependencies
+   pip install pandas chardet openpyxl xlrd==2.0.1
+   
+   # Or use requirements file if available
    pip install -r requirements.txt
    ```
 
-For detailed installation instructions, see the [Installation Guide](Documentation/installation.md).
+4. **Verify Setup**:
+   ```python
+   # Run Python and try importing required packages
+   python
+   >>> import pandas
+   >>> import chardet
+   >>> import openpyxl
+   >>> import xlrd
+   >>> exit()
+   ```
+
+5. **Initial Configuration**:
+   - Open `config.py` in a text editor
+   - Update the search path to your desired directory:
+     ```python
+     DEFAULT_SEARCH_PATH = r'C:\Your\Search\Path'  # Windows
+     # or
+     DEFAULT_SEARCH_PATH = '/your/search/path'     # Unix/MacOS
+     ```
+
+6. **Test Run**:
+   ```bash
+   python file_search.py
+   ```
+
+### Common Setup Issues
+
+1. **"Python not found" error**:
+   - Ensure Python is in your system's PATH
+   - Try using `python3` instead of `python` on Unix/MacOS
+
+2. **"pip not found" error**:
+   - Install pip: `python -m ensurepip --default-pip`
+   - Or download [get-pip.py](https://bootstrap.pypa.io/get-pip.py) and run:
+     ```bash
+     python get-pip.py
+     ```
+
+3. **Virtual Environment issues**:
+   - On Windows, you might need to run:
+     ```bash
+     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser  # PowerShell
+     ```
+   - Try creating virtualenv with:
+     ```bash
+     python -m pip install --user virtualenv
+     python -m virtualenv venv
+     ```
+
+For detailed installation instructions and troubleshooting, see the [Installation Guide](Documentation/installation.md).
 
 ## 🔍 Basic Usage
 
@@ -105,12 +196,12 @@ Common issues and solutions:
    ```
 
 2. **Encoding Issues**:
-    - Check the [Installation Guide](Documentation/installation.md#common-installation-issues)
-    - Adjust encoding settings in `config.py`
+   - Check the [Installation Guide](Documentation/installation.md#common-installation-issues)
+   - Adjust encoding settings in `config.py`
 
 3. **Performance Issues**:
-    - See [Performance Guide](Documentation/performance.md)
-    - Adjust chunk size and memory settings
+   - See [Performance Guide](Documentation/performance.md)
+   - Adjust chunk size and memory settings
 
 For more troubleshooting help, check the [Installation Guide](Documentation/installation.md#troubleshooting).
 
